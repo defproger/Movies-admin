@@ -15,7 +15,6 @@ services:
       - ./db:/db
       - ./vendor:/var/www/html/vendor
       - ./composer.json:/var/www/html/composer.json
-      - ./composer.lock:/var/www/html/composer.lock
     environment:
       APACHE_DOCUMENT_ROOT: /var/www/html/src/public
     depends_on:

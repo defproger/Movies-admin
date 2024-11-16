@@ -21,6 +21,16 @@ class Router
     }
 
     /**
+     * Метод для установки префикса для маршрутов
+     *
+     * @param string $prefix Префикс
+     */
+    public function setPath(string $prefix): void
+    {
+        $this->prefix = $prefix;
+    }
+
+    /**
      * Метод для обработки GET-запросов
      *
      * @param string $url Маршрут
