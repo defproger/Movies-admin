@@ -73,18 +73,18 @@ class MySQLDatabase implements DatabaseInterface
         return (int)$this->dbh->lastInsertId();
     }
 
-    public function update(string $table, array $data, int $id): void
+    public function update(string $table, array $data, int $id, string $field = 'id'): void
     {
         $fields = implode(', ', array_map(fn($key) => "`$key` = :$key", array_keys($data)));
-        $sql = "UPDATE `{$table}` SET {$fields} WHERE id = :id";
+        $sql = "UPDATE `{$table}` SET {$fields} WHERE `{$field}` = :id";
         $stmt = $this->dbh->prepare($sql);
         $data['id'] = $id;
         $stmt->execute($data);
     }
 
-    public function delete(string $table, int $id): void
+    public function delete(string $table, int $id, string $field = 'id'): void
     {
-        $stmt = $this->dbh->prepare("DELETE FROM `{$table}` WHERE id = :id");
+        $stmt = $this->dbh->prepare("DELETE FROM `{$table}` WHERE `{$field}` = :id");
         $stmt->execute(['id' => $id]);
     }
 

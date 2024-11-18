@@ -10,7 +10,7 @@ $view = new View();
 
 $router->get('/', function () use ($userController) {
     if ($userController->isAuthenticated()) {
-        header('Location: /dashboard');
+        header('Location: /movies');
     } else {
         header('Location: /login');
     }
@@ -26,12 +26,24 @@ $router->get('/login', function () use ($view) {
 
 $router->get('/logout', function () use ($userController) {
     $userController->logout();
+    header('Location: /login');
+    exit();
 });
 
-$router->get('/dashboard', function () use ($userController, $view) {
+$router->get('/movies', function () use ($userController, $view) {
     $user = $userController->isAuthenticated();
     if ($user) {
-        $view->display('dashboard', ['user' => $user]);
+        $view->display('movies', ['user' => $user]);
+    } else {
+        header('Location: /login');
+        exit();
+    }
+});
+
+$router->get('/directors', function () use ($userController, $view) {
+    $user = $userController->isAuthenticated();
+    if ($user) {
+        $view->display('directors', ['user' => $user]);
     } else {
         header('Location: /login');
         exit();

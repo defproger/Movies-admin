@@ -53,7 +53,7 @@ class UserController extends BaseController
         $this->db->update('users', ['hash' => $token], $user['id']);
         setcookie('auth_token', $token, time() + 86400, '/');
 
-        $this->response(['message' => 'Login successful', 'redirect' => '/dashboard']);
+        $this->response(['message' => 'Login successful', 'redirect' => '/movies']);
     }
 
     public function isAuthenticated(): array|false
