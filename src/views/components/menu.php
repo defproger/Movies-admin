@@ -15,10 +15,14 @@
                     <i data-feather="film"></i>
                     <span class="menu-title text-truncate">Movies</span>
                 </a>
+            </li>
+            <li class=" nav-item">
                 <a class="d-flex align-items-center" href="/directors">
                     <i data-feather="users"></i>
                     <span class="menu-title text-truncate">Directors</span>
                 </a>
+            </li>
+            <li class=" nav-item">
                 <a class="d-flex align-items-center" href="/logout">
                     <i data-feather="log-out"></i>
                     <span class="menu-title text-truncate">Logout</span>
